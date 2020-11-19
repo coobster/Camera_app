@@ -39,20 +39,3 @@ while True:
     ThreadCount += 1
     print('Thread #{}'.format(ThreadCount))
 ServerSock.close()
-'''
-with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as soc:
-   soc.bind((HOST,PORT))
-   soc.listen()
-   conn,addr = soc.accept()
-   with conn:
-      print('connected by ',addr)
-      full = b''
-      while True:
-          data = conn.recv(240000)
-          if not data:
-             break
-          else:
-             full += data 
-      with open('images/{}.png'.format(str(addr[0]) + str(time())),'w+b') as f:
-          f.write(full)
-'''
