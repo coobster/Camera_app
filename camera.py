@@ -6,9 +6,11 @@ from kivy.core.image import Image
 from io import BytesIO
 import socket
 from _thread import start_new_thread
-
-HOST = '10.0.0.224'
-#HOST = '127.0.0.1'
+''' 
+The HOST name is set to localhost/127.0.0.1 for testing purposes.
+I have tested it on my local networks server.
+'''
+HOST = '127.0.0.1'
 PORT = 5455
 '''
 This is my first app attempt with the kivy module for python.
