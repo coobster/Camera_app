@@ -10,24 +10,29 @@ from _thread import start_new_thread
 HOST = '10.0.0.224'
 #HOST = '127.0.0.1'
 PORT = 5455
+'''
+This is my first app attempt with the kivy module for python.
+It is super basic and follows the outline of some web tutorials.
+
+'''
 
 	
 class MyCamera(App):
 	def build(self):
 		layout = BoxLayout(orientation='vertical')
 
-		self.cameraObject = Camera(play=True)
-		self.cameraObject.resolution = (500,500)
+		self.webcam = Camera(play=True)
+		self.webcam.resolution = (500,500)
 
-		self.cameraClick = Button(text='Take Photo')
-		self.cameraClick.size_hint = (.5,.2)
-		self.cameraClick.pos_hint = {'x':.25,'y':.75}
-		self.cameraClick.bind(on_press=self.onCameraClick)
-		layout.add_widget(self.cameraObject)
-		layout.add_widget(self.cameraClick)
+		self.cameraButton = Button(text='Take Photo')
+		self.cameraButton.size_hint = (.5,.2)
+		self.cameraButton.pos_hint = {'x':.25,'y':.75}
+		self.cameraButton.bind(on_press=self.onButton)
+		layout.add_widget(self.webcam)
+		layout.add_widget(self.cameraButton)
 		return layout
-	def onCameraClick(self,*args):
-		texture = self.cameraObject.export_as_image()
+	def onButton(self,*args):
+		texture = self.webcam.export_as_image()
 		b_io = BytesIO()
 		texture.save(b_io,fmt='png')
 		#im = Image(texture,fmt='png')
